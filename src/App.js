@@ -1,15 +1,10 @@
-import Rewards from "./Rewards";
-
-import { useState } from "react";
+import RewardsProgram from './RewardsProgram';
 
 function App() {
-
-  const [comments,setComments] = useState([])
-
   return (
 
     <div>
-      <Rewards/>
+      <RewardsProgram/>
     </div>
 
   );
