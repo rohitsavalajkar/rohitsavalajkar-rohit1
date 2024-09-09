@@ -1,29 +1,49 @@
-// Separate UI Component 
-// Avoid Rewards.js file
-import React,{useEffect,useState} from 'react';
-import { getPointsData } from './Points';
+import React from 'react';
 
-const RewardsProgram =() =>{
-    const [pointsData,setPointsData]= useState({});
-
-    useEffect(()=>{
-        const fetchData = async() =>{
-            const points =await getPointsData();
-            setPointsData(points);
-        };
-        fetchData();
-    },[]);
-
+const RewardsProgram =({monthlyPoints,transactionDetails}) =>{
+   
     return(
         <div>
-            <h1>Rewards Points</h1>
-            <ul>
-                {Object.keys(pointsData).map((month)=>(
-                    <li key={month}>
-                        {month}:{pointsData[month]}points
-                    </li>
+            <h2>Monthly Points</h2>
+           <table>
+            <thead>
+                <tr>
+                    <th>Customer Name|</th>
+                    <th>Month|</th>
+                    <th>Month Wise Total Points|</th>
+                </tr>
+            </thead>
+            <tbody>
+                {monthlyPoints.map((item,index)=>(
+                    <tr key={index}>
+                        <td>{item.customer}</td>
+                        <td>{item.month}</td>
+                        <td>{item.totalPoints}</td>
+                    </tr>
                 ))}
-            </ul>
+            </tbody>
+           </table>
+           <h2>Transaction Details</h2>
+           <table>
+            <thead>
+                <tr>
+                    <th>Customer Name|</th>
+                    <th>Transaction Amount|</th>
+                    <th>Calculated Points|</th>
+                    <th>Date|</th>
+                </tr>
+            </thead>
+            <tbody>
+                {transactionDetails.map((item,index)=>(
+                    <tr key={index}>
+                        <td>{item.customer}</td>
+                        <td>{item.amount}</td>
+                        <td>{item.points}</td>
+                        <td>{item.date}</td>
+                    </tr>
+                ))}
+            </tbody>
+           </table>
         </div>
     );
 };
