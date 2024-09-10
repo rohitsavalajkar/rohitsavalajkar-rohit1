@@ -1,6 +1,6 @@
 import React from 'react';
 
-const RewardsProgram =({monthlyPoints,transactionDetails}) =>{
+ export const RewardsProgram =({monthlyPoints,transactionDetails}) =>{
    
     return(
         <div>
@@ -14,7 +14,7 @@ const RewardsProgram =({monthlyPoints,transactionDetails}) =>{
                 </tr>
             </thead>
             <tbody>
-                {monthlyPoints.map((item,index)=>(
+                {monthlyPoints?.map((item,index)=>(
                     <tr key={index}>
                         <td>{item.customer}</td>
                         <td>{item.month}</td>
@@ -34,7 +34,7 @@ const RewardsProgram =({monthlyPoints,transactionDetails}) =>{
                 </tr>
             </thead>
             <tbody>
-                {transactionDetails.map((item,index)=>(
+                {transactionDetails?.map((item,index)=>(
                     <tr key={index}>
                         <td>{item.customer}</td>
                         <td>{item.amount}</td>

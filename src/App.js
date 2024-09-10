@@ -1,35 +1,27 @@
 import React,{useEffect,useState} from 'react';
 import RewardsProgram from './RewardsProgram';
+import {calculateRewardPoints} from './RewardsPoints';
 
-const App =() =>{
+ const App =() =>{
   const [monthlyPoints,setMonthlyPoints]= useState([]);
   const [transactionDetails,setTransactionDetails]= useState([]);
 
- const fetchData =async() =>{
+ const fetchData =() =>{
     
-      return (
-        [{customer_id:"c01",customer:"Sam Den", amount:"100",date:"01-08-24"},
-          {customer_id:"c02",customer:"Sam Den", amount:"200",date:"04-08-24"},
-          {customer_id:"c03",customer:"Harish Roy", amount:"120",date:"01-08-24"},
-          {customer_id:"c04",customer:"Sam Den", amount:"100",date:"01-08-24"},
-          {customer_id:"c05",customer:"Sam Den", amount:"200",date:"04-08-24"},
-          {customer_id:"c06",customer:"Harish Roy", amount:"120",date:"01-08-24"},
-         
-      ]);
+      return new Promise ((resolve) =>{
+        setTimeout(() =>{
+          resolve( [{customer_id:"c01",customer:"Sam Den", amount:"100",date:"01-08-24"},
+            {customer_id:"c02",customer:"Sam Den", amount:"200",date:"04-08-24"},
+            {customer_id:"c03",customer:"Harish Roy", amount:"120",date:"01-08-24"},
+            {customer_id:"c04",customer:"Sam Den", amount:"100",date:"01-08-24"},
+            {customer_id:"c05",customer:"Sam Den", amount:"200",date:"04-08-24"},
+            {customer_id:"c06",customer:"Harish Roy", amount:"120",date:"01-08-24"},
+           
+        ]);
+        }, 1000);
+      });
   };
   
-  const calculatePoints =(amount) => {
-    let points = 0;
-    if(amount > 100){
-      points += 2*(amount-100);
-      points +=50;
-    }
-    else if(amount > 50){
-      points +=(amount -50);
-    }
-    return points;
-  };
-
   useEffect(()=>{
     const getData = async() =>{
         const data = await fetchData();
@@ -37,7 +29,7 @@ const App =() =>{
         const transactionList =[];
 
         data.forEach(transaction =>{
-          const points = calculatePoints(transaction.amount);
+          const points = calculateRewardPoints(transaction.amount);
           const month =transaction.date.split('-')[1]
 
           if(!monthlyTotals[transaction.customer]){
@@ -82,4 +74,4 @@ return(
 
  
 
-export default App;
+ export default App;
