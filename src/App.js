@@ -6,25 +6,10 @@ import {calculateRewardPoints} from './RewardsPoints';
   const [monthlyPoints,setMonthlyPoints]= useState([]);
   const [transactionDetails,setTransactionDetails]= useState([]);
 
- const fetchData =() =>{
-    
-      return new Promise ((resolve) =>{
-        setTimeout(() =>{
-          resolve( [{customer_id:"c01",customer:"Sam Den", amount:"100",date:"01-08-24"},
-            {customer_id:"c02",customer:"Sam Den", amount:"200",date:"04-08-24"},
-            {customer_id:"c03",customer:"Harish Roy", amount:"120",date:"01-08-24"},
-            {customer_id:"c04",customer:"Sam Den", amount:"100",date:"01-08-24"},
-            {customer_id:"c05",customer:"Sam Den", amount:"200",date:"04-08-24"},
-            {customer_id:"c06",customer:"Harish Roy", amount:"120",date:"01-08-24"},
-           
-        ]);
-        }, 1000);
-      });
-  };
-  
   useEffect(()=>{
     const getData = async() =>{
-        const data = await fetchData();
+      const response = await fetch('/transactions.json')
+        const data = await response.json();
         const monthlyTotals ={};
         const transactionList =[];
 

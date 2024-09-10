@@ -1,0 +1,7 @@
+[
+  {"customer_id":"c01","customer":"Sam Den", "amount":"100","date":"01-08-24"},
+  {"customer_id":"c02","customer":"Harish Roy", "amount":"200","date":"01-08-24"},
+  {"customer_id":"c03","customer":"Sam Den", "amount":"120","date":"01-08-24"},
+  {"customer_id":"c04","customer":"Sam Den", "amount":"100","date":"01-08-24"},
+  {"customer_id":"c05","customer":"Harish Roy", "amount":"200","date":"01-08-24"}
+]
